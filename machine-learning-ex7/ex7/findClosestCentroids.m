@@ -20,12 +20,21 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
-
-
-
-
+train_num = size(X,1);
+for i=1:1:train_num
+  distance = +inf;
+  index = 1;
+  for j=1:1:K
+    temp_distance = sum((X(i,:) - centroids(j,:)).^2);
+    if temp_distance < distance
+      distance = temp_distance;
+      index = j;
+    else
+      continue;
+    end
+  end  
+  idx(i) = index;
+end
 
 % =============================================================
 
